@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071426">
+  <meta name="description" content="Проверьте свои знания о рыночной экономике в интерактивной викторине.">
+  <title>Экономическая викторина</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Экономическая викторина — на главную">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M5 24.5 12.2 17l5.1 4.8L27 10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20.5 10H27v6.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>ЭКОНОМИКА <span class="brand-light">ПРОСТО</span></span>
+      </a>
+      <span class="topbar-note"><span class="status-dot"></span> Интерактивная викторина</span>
+    </header>
+
+    <main id="app" class="main-content">
+      <section id="start-screen" class="screen start-screen" aria-labelledby="main-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> ПРОВЕРЬТЕ СЕБЯ</p>
+          <h1 id="main-title">Экономическая<br>викторина</h1>
+          <p class="hero-description">Насколько хорошо вы понимаете, как устроена рыночная экономика? Ответьте на вопросы и узнайте свой результат.</p>
+          <div class="quiz-facts" aria-label="О викторине">
+            <span class="fact"><span class="fact-icon" aria-hidden="true">◷</span> 20 вопросов</span>
+            <span class="fact-divider" aria-hidden="true"></span>
+            <span class="fact"><span class="fact-icon fact-spark" aria-hidden="true">✦</span> Один верный ответ</span>
+          </div>
+          <button id="start-button" class="button button-primary" type="button">
+            Начать тест <span class="button-arrow" aria-hidden="true">→</span>
+          </button>
+          <p class="start-footnote">Без регистрации · Примерно 5 минут</p>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="visual-glow"></div>
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="visual-card">
+            <div class="visual-card-top"><span>РЫНОЧНАЯ ЭКОНОМИКА</span><span class="mini-dot"></span></div>
+            <div class="chart-area">
+              <div class="chart-grid"></div>
+              <svg class="chart-line" viewBox="0 0 360 180" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#65d9ee" stop-opacity=".28"/>
+                    <stop offset="100%" stop-color="#65d9ee" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0 148 C38 130 44 142 78 112 S124 124 157 92 197 104 225 66 263 82 291 45 331 55 360 18 V180 H0Z" fill="url(#chartFill)"/>
+                <path d="M0 148 C38 130 44 142 78 112 S124 124 157 92 197 104 225 66 263 82 291 45 331 55 360 18" fill="none" stroke="#69dced" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="291" cy="45" r="5" fill="#071426" stroke="#9bf1f5" stroke-width="3"/>
+              </svg>
+              <span class="chart-label">Рост рынка</span>
+            </div>
+            <div class="visual-card-bottom">
+              <div><span class="metric-label">Спрос</span><span class="metric-value">↗</span></div>
+              <div><span class="metric-label">Предложение</span><span class="metric-value metric-white">↗</span></div>
+              <div><span class="metric-label">Конкуренция</span><span class="metric-value">∞</span></div>
+            </div>
+          </div>
+          <div class="floating-note"><span class="note-icon">↗</span><span><strong>Свободный выбор</strong><small>основа рынка</small></span></div>
+          <div class="visual-orb orb-a"></div>
+          <div class="visual-orb orb-b"></div>
+        </div>
+      </section>
+
+      <section id="quiz-screen" class="screen quiz-screen" aria-labelledby="question-title" hidden>
+        <div class="quiz-heading">
+          <p class="eyebrow"><span class="eyebrow-line"></span> ОБЩАЯ ХАРАКТЕРИСТИКА</p>
+          <div class="question-counter"><span id="current-question">01</span><span class="counter-divider">/</span><span id="total-questions">20</span></div>
+        </div>
+        <div class="progress-track" role="progressbar" aria-label="Прогресс викторины" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <div class="question-card">
+          <div class="question-meta"><span id="question-category" class="category-pill">ОСНОВЫ РЫНКА</span><span class="question-number-label">ВОПРОС <span id="question-number">01</span></span></div>
+          <h1 id="question-title" tabindex="-1"></h1>
+          <div id="answer-list" class="answer-list" role="group" aria-labelledby="question-title"></div>
+          <div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div>
+          <div class="card-footer">
+            <span class="footer-hint"><span class="hint-dot"></span> Выберите один вариант ответа</span>
+            <button id="next-button" class="button button-primary button-next" type="button" disabled>Ответить <span class="button-arrow" aria-hidden="true">→</span></button>
+          </div>
+        </div>
+        <p class="quiz-caption">ЭКОНОМИЧЕСКАЯ ВИКТОРИНА <span>·</span> РЫНОЧНАЯ ЭКОНОМИКА</p>
+      </section>
+
+      <section id="result-screen" class="screen result-screen" aria-labelledby="result-title" hidden>
+        <div class="result-card">
+          <div class="result-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><path d="m14 24 7 7 14-15" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="24" r="21" stroke="currentColor" stroke-width="1.5" opacity=".35"/></svg>
+          </div>
+          <p class="eyebrow"><span class="eyebrow-line"></span> ВИКТОРИНА ЗАВЕРШЕНА</p>
+          <h1 id="result-title">Отличная работа!</h1>
+          <p id="result-message" class="result-message"></p>
+          <div class="score-panel">
+            <div class="score-item"><span class="score-label">Правильные ответы</span><strong id="score-count" class="score-value">0 <small>/ 20</small></strong></div>
+            <span class="score-separator"></span>
+            <div class="score-item score-percent-item"><span class="score-label">Ваш результат</span><strong id="score-percent" class="score-value">0%</strong></div>
+          </div>
+          <button id="restart-button" class="button button-primary" type="button">Пройти ещё раз <span class="button-arrow" aria-hidden="true">↻</span></button>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><span>УЧИСЬ ПОНИМАТЬ ЭКОНОМИКУ</span><span class="footer-mark" aria-hidden="true">●</span><span>ШАГ ЗА ШАГОМ</span></footer>
+  </div>
+</body>
+</html>
